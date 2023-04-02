@@ -1,16 +1,15 @@
-package com.itwillbs.board.boardReview;
+package com.seseokboard.board;
 
 import java.sql.Date;
 
 public class BoardDTO {
-	
 	private int bno;
 	private String name;
 	private String pass;
 	private String subject;
 	private String content;
 	
-	private int readcount;
+	private int readCount;
 	private int re_ref;
 	private int re_lev;
 	private int re_seq;
@@ -48,11 +47,11 @@ public class BoardDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public int getReadcount() {
-		return readcount;
+	public int getReadCount() {
+		return readCount;
 	}
-	public void setReadcount(int readcount) {
-		this.readcount = readcount;
+	public void setReadCount(int readCount) {
+		this.readCount = readCount;
 	}
 	public int getRe_ref() {
 		return re_ref;
@@ -90,11 +89,12 @@ public class BoardDTO {
 	public void setFile(String file) {
 		this.file = file;
 	}
+	// getter / setter end
 	@Override
 	public String toString() {
 		return "BoardDTO [bno=" + bno + ", name=" + name + ", pass=" + pass + ", subject=" + subject + ", content="
-				+ content + ", readcount=" + readcount + ", re_ref=" + re_ref + ", re_lev=" + re_lev + ", re_seq="
+				+ content + ", readCount=" + readCount + ", re_ref=" + re_ref + ", re_lev=" + re_lev + ", re_seq="
 				+ re_seq + ", date=" + date + ", ip=" + ip + ", file=" + file + "]";
 	}
-
-}
+	// toString() end
+}// BoradDTO class end

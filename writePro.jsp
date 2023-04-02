@@ -1,4 +1,4 @@
-<%@page import="com.itwillbs.board.boardReview.BoardDAO"%>
+<%@page import="com.seseokboard.board.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,22 +8,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>writePro.jsp</h1>
-	<h2>전달받은 정보를 DB에 저장</h2>
+<h1>writePro.jsp</h1>
 	<%
 	request.setCharacterEncoding("UTF-8");
+// 	String id = request.getParameter("name");
+// 	if(id == null || id == ""){
+		%>
+		<script type="text/javascript">
+// 		alert('INPUT NAME!!');
+// 		history.back();
+		</script>
+		<%
+// 	}// if end // not working.
 	%>
-	<jsp:useBean id="dto" class="com.itwillbs.board.boardReview.BoardDTO"/>
-	<jsp:setProperty property ="*" name="dto"/>
+	<jsp:useBean id="dto" class="com.seseokboard.board.BoardDTO"/>
+	<jsp:setProperty property="*" name="dto"/>
 	<%
 	dto.setIp(request.getRemoteAddr());
+	System.out.println(dto.getIp());
 	
 	BoardDAO dao = new BoardDAO();
-	
 	dao.insertBoard(dto);
 	
+	System.out.println("writePro: 글쓰기 동작 수행 완료!");
 	response.sendRedirect("boardList.jsp");
 	%>
+
 
 </body>
 </html>
