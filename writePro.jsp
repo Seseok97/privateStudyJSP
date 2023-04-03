@@ -1,4 +1,4 @@
-<%@page import="com.seseokboard.board.BoardDAO"%>
+<%@page import="com.itwillbs.board.boardReview.BoardDAO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,7 +21,7 @@
 		<%
 // 	}// if end // not working.
 	%>
-	<jsp:useBean id="dto" class="com.seseokboard.board.BoardDTO"/>
+	<jsp:useBean id="dto" class="com.itwillbs.board.boardReview.BoardDTO"/>
 	<jsp:setProperty property="*" name="dto"/>
 	<%
 	dto.setIp(request.getRemoteAddr());

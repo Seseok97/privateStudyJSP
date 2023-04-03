@@ -1,5 +1,5 @@
-<%@page import="com.seseokboard.board.BoardDTO"%>
-<%@page import="com.seseokboard.board.BoardDAO"%>
+<%@page import="com.itwillbs.board.boardReview.BoardDTO"%>
+<%@page import="com.itwillbs.board.boardReview.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -31,7 +31,7 @@
 			<td>글 번호</td>
 			<td><%=dto.getBno() %></td>
 			<td>조회수</td>
-			<td><%=dto.getReadCount() %></td>
+			<td><%=dto.getReadcount() %></td>
 		</tr>
 		<tr>
 			<td>작성자</td>
@@ -53,8 +53,8 @@
 		</tr>
 		<tr>
 			<td colspan="4">
-				<input type="button" value="수정">
-				<input type="button" value="삭제">
+				<input type="button" value="수정" onclick='location.href="boardUpdate.jsp?bno=<%=bno %>&pageNum=<%=pageNum %>";'>
+				<input type="button" value="삭제" onclick='location.href="boardDelete.jsp?bno=<%=bno %>&pageNum=<%=pageNum %>";'>
 				<input type="button" value="답글">
 				<input type="button" value="목록">
 			</td>
@@ -64,41 +64,6 @@
 	
 	
 	</table>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

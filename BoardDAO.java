@@ -1,4 +1,4 @@
-package com.seseokboard.board;
+package com.itwillbs.board.boardReview;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -69,7 +69,7 @@ public class BoardDAO {
 			pstmt.setString(3, dto.getPass());
 			pstmt.setString(4, dto.getSubject());
 			pstmt.setString(5, dto.getContent());
-			pstmt.setInt(6, dto.getReadCount());
+			pstmt.setInt(6, dto.getReadcount());
 			pstmt.setInt(7, bno);
 			pstmt.setInt(8, dto.getRe_lev());
 			pstmt.setInt(9, dto.getRe_seq());
@@ -107,7 +107,7 @@ public class BoardDAO {
 				dto.setPass(rs.getString("pass"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setContent(rs.getString("content"));
-				dto.setReadCount(rs.getInt("readcount"));
+				dto.setReadcount(rs.getInt("readcount"));
 				dto.setRe_ref(rs.getInt("re_ref"));
 				dto.setRe_lev(rs.getInt("re_lev"));
 				dto.setRe_seq(rs.getInt("re_seq"));
@@ -165,7 +165,7 @@ public class BoardDAO {
 				dto.setPass(rs.getString("pass"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setContent(rs.getString("content"));
-				dto.setReadCount(rs.getInt("readcount"));
+				dto.setReadcount(rs.getInt("readcount"));
 				dto.setRe_ref(rs.getInt("re_ref"));
 				dto.setRe_lev(rs.getInt("re_lev"));
 				dto.setRe_seq(rs.getInt("re_seq"));
@@ -182,6 +182,81 @@ public class BoardDAO {
 		}// tcf end
 		return dto;
 	}// getBoard() method end
+	
+	public int updateBoard(BoardDTO dto) {
+		int result = 0;
+		
+		try {
+			con = getCon();
+			sql="select pass from board_review where bno=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dto.getBno());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(dto.getPass().equals(rs.getString("pass"))) {
+				sql ="update board_review set name=?, subject=?, content=? where bno=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, dto.getName());
+					pstmt.setString(2, dto.getSubject());
+					pstmt.setString(3, dto.getContent());
+					pstmt.setInt(4, dto.getBno());
+					
+					pstmt.executeUpdate();
+					
+					System.out.println("DAO: 글 수정 동작 완료!");
+					result = 1;
+				}else{
+					result = -1;
+					System.out.println("비밀번호 오류!");
+				}// i - e end
+			}else {
+				result = -1;
+				System.out.println("DAO: 해당 글 없음!");
+			} // i - e end
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		} // tcf end
+		return result;
+	}// updateBoard() method end
+	
+	public int deleteBoard(BoardDTO dto) {
+		int result = 0;
+		try {
+			
+			con = getCon();
+			sql = "select pass from board_review where bno=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dto.getBno());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				if(dto.getPass().equals(rs.getString("pass"))) {
+					sql ="delete from board_review where bno=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, dto.getBno());
+					
+					pstmt.executeUpdate();
+					result = 1;
+					System.out.println("DAO: 글 삭제 동작 완료!");
+				}else {
+					result = -1;
+					System.out.println("비밀번호 오류");
+				}
+			}else {
+				result= -1;
+				System.out.println("값 없음!");		
+			}
+		} catch (Exception e) {
+			result = -1;
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}// tcf end
+		return result;
+	}// deleteBoard() method end
 	
 	
 	

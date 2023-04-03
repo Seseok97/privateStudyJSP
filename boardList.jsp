@@ -1,6 +1,6 @@
-<%@page import="com.seseokboard.board.BoardDTO"%>
+<%@page import="com.itwillbs.board.boardReview.BoardDTO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.seseokboard.board.BoardDAO"%>
+<%@page import="com.itwillbs.board.boardReview.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -57,7 +57,7 @@
 					<%=dto.getSubject() %></a></td>
 				<td><%=dto.getName() %></td>
 				<td><%=dto.getDate() %></td>
-				<td><%=dto.getReadCount() %></td>
+				<td><%=dto.getReadcount() %></td>
 				<td><%=dto.getIp() %></td>
 			</tr>
 			<% }// for end %>
@@ -101,50 +101,6 @@
 			%>
 		
 	</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
