@@ -12,6 +12,7 @@
 <body>
 <h1>boardList.jsp</h1>
 <h2><a href="writeForm.jsp">글쓰기</a></h2>
+<h2><a href="fWriteForm.jsp?">파일 글쓰기</a></h2>
 	
 	<%
 	// BoardDAO 객체 생성 > BoardDAO의 메서드를 이용하기 위함.
@@ -54,6 +55,10 @@
 				<td><%=dto.getBno() %></td>
 				<td>
 					<a href="boardContent.jsp?bno=<%=dto.getBno() %>&pageNum=<%=pageNum%>">
+					<%if(dto.getRe_lev()>0){ %>
+					<%for(int j=0;j<dto.getRe_lev()-1;j++){%>
+						<img src="level.gif">
+					<%} %><img src="re.gif"><%}%>
 					<%=dto.getSubject() %></a></td>
 				<td><%=dto.getName() %></td>
 				<td><%=dto.getDate() %></td>

@@ -20,7 +20,7 @@
 	
 	
 	// DB > 조회수 1 증가 메서드
-// 	dao.updateReadCount(bno);
+	dao.updateReadCount(bno);
 	
 	// bno 정보 저장
 	BoardDTO dto = dao.getBoard(bno);
@@ -45,7 +45,13 @@
 		</tr>
 		<tr>
 			<td>첨부파일</td>
-			<td colspan="3"><%=dto.getFile() %></td>
+			<td colspan="3">
+			<%if(dto.getFile() != null){%>
+				<a href="file/fileDownload.jsp?fileName=<%=dto.getFile() %>">
+				<img src="save.png" width="13" height="13"> <%=dto.getFile() %></a>
+			<%}else{%>
+				첨부파일 없음
+			<%}%></td>
 		</tr>
 		<tr>
 			<td>글 내용</td>
@@ -55,8 +61,8 @@
 			<td colspan="4">
 				<input type="button" value="수정" onclick='location.href="boardUpdate.jsp?bno=<%=bno %>&pageNum=<%=pageNum %>";'>
 				<input type="button" value="삭제" onclick='location.href="boardDelete.jsp?bno=<%=bno %>&pageNum=<%=pageNum %>";'>
-				<input type="button" value="답글">
-				<input type="button" value="목록">
+				<input type="button" value="답글" onclick='location.href="reWriteForm.jsp?bno=<%=bno %>&pageNum=<%=pageNum %>";'>
+				<input type="button" value="목록" onclick='location.href="boardList.jsp?pageNum=<%=pageNum %>";'>
 			</td>
 		</tr>
 		
